@@ -1,0 +1,162 @@
+@font-face {
+    font-family: 'Gotham';
+    src: url(../Gotham.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #ffcdd2;
+}
+
+svg {
+    display: block;
+    width: 9.7em;
+}
+
+button {  
+    height: 4.4em;
+    width: 4.4em;
+    position: absolute;
+    top: 5em;
+    right: 15.8em;
+    transform: translate(-50%, -50%);
+    outline: none;
+    border: none;
+    background-color: #ef3f24;
+    cursor: pointer;
+    transition: background .4s ease;
+    z-index: 8;
+}
+  
+button::before,
+button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    height: 0.2em;
+    width: 2em;
+    transition: transform 1.5s cubic-bezier(.19,1,.22,1);
+  
+}
+  
+button::before { 
+    transform: translate(-50%, -.3em);
+}
+  
+button::after {
+    transform: translate(-50%, .3em);
+}
+  
+button:hover {
+    background-color: #fff;
+}
+  
+button:hover::before,
+button:hover::after {
+    background-color: #ef3f24;
+}
+
+.active::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.active::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.menu {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5;
+}
+
+.menu::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 0;
+    width: 100%;
+    background-color: #ef3f24;
+    transition: height 1.5s cubic-bezier(.19 ,1, .22, 1) .4s;
+}
+
+.menu ul {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    font-family: 'Gotham';
+    opacity: 0;
+    transition: opacity .4s ease .6s;
+}
+
+.menu ul li {
+    width: 100%;
+    display: flex;
+}
+
+.menu ul li:first-child,
+.menu ul li:last-child {
+    justify-content: center;
+}
+
+.menu ul li:nth-child(2) {
+    padding: 0 280px
+}
+
+.menu ul li:nth-child(3) {
+    justify-content: flex-end;
+    padding: 0 280px
+}
+
+.menu ul li:nth-child(2), 
+.menu ul li:nth-child(3),
+.menu ul li:last-child {
+    padding-top: 3em;
+}
+
+.menu ul a {
+    text-decoration: none;
+    font-size: 6.4em;
+    color: transparent;
+    -webkit-text-stroke: 2px white;
+    position: relative;
+    transition: .3s;
+}
+
+.menu ul li a::before {
+    content: '01';
+    position: absolute;
+    bottom: 1em;
+    left: -3em;
+    font-size: 20px;
+    color: #fff;
+    -webkit-text-stroke: 0;
+}
+
+.menu ul a:hover {
+    color: #fff;
+}
+
+.menu-active ul {
+    opacity: 1;
+}
+
+.menu-active::before {
+    height: 100%;
+}
